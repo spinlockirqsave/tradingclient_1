@@ -1,6 +1,7 @@
-This is a base for a C++ trading application
-which uses C++ IB TWS API.
+This is a base for a C++ trading application which uses Ruediger Meier's forked
+C++ IB TWS API [https://github.com/rudimeier/twsapi] which is now constantly developed.
 ============================================
+
 
 
 The project homepage (bugtracker, latest git repo) is hosted on github
@@ -25,7 +26,7 @@ Repository layout
 
 
 
-Changes of original IB API
+Changes of original IB API included by use of Ruediger Meier's version of API
 --------------------------
 
 
