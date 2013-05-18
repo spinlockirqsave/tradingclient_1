@@ -5,7 +5,7 @@
 # include <unistd.h>
 #endif
 
-#include "PosixTestClient.h"
+#include "PosixClient.h"
 
 const unsigned MAX_ATTEMPTS = 1;
 const unsigned SLEEP_TIME = 10;
@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 		++attempt;
 		printf( "Attempt %u of %u\n", attempt, MAX_ATTEMPTS);
 
-		IB::PosixTestClient client;
+		IB::PosixClient client;
 
 		client.connect( host, port, clientId);
 

@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/PosixTestClient.o \
+	${OBJECTDIR}/PosixClient.o \
 	${OBJECTDIR}/Main.o
 
 
@@ -63,10 +63,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tradingclient_1: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tradingclient_1 ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/PosixTestClient.o: PosixTestClient.cpp 
+${OBJECTDIR}/PosixClient.o: PosixClient.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -DHAVE_CONFIG_H -DIB_USE_STD_STRING -D_GNU_SOURCE -I../twsapi/PosixSocketClient/src -I../twsapi/Shared -I../twsapi -MMD -MP -MF $@.d -o ${OBJECTDIR}/PosixTestClient.o PosixTestClient.cpp
+	$(COMPILE.cc) -g -DDEBUG -DHAVE_CONFIG_H -DIB_USE_STD_STRING -D_GNU_SOURCE -I../twsapi/PosixSocketClient/src -I../twsapi/Shared -I../twsapi -MMD -MP -MF $@.d -o ${OBJECTDIR}/PosixClient.o PosixClient.cpp
 
 ${OBJECTDIR}/Main.o: Main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
