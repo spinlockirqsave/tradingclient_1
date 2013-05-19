@@ -1,5 +1,6 @@
 This is a base for a C++ trading application which uses Ruediger Meier's forked
-C++ IB TWS API [https://github.com/rudimeier/twsapi] which is now constantly developed.
+C++ IB TWS API [https://github.com/rudimeier/twsapi]. This trading client application
+is now constantly developed.
 ============================================
 
 
