@@ -1,5 +1,6 @@
 This is a base for a C++ trading application which uses C++ IB TWS API
-forked from Ruediger Meier's repositorium [https://github.com/rudimeier/twsapi].
+forked from Ruediger Meier's repositorium [https://github.com/rudimeier/twsapi],
+QuantLib-1.2.1 and CUDA 5.0.
 This trading client application is compiled on Ubuntu 12.10 with g++ 4.7
 and now it is constantly developed.
 ============================================
