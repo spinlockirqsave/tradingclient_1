@@ -2,7 +2,6 @@
 #define posixtestclient_h__INCLUDED
 
 #include "EWrapper.h"
-
 #include <memory>
 #include <stdio.h> //printf()
 

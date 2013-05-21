@@ -37,11 +37,15 @@
         <compilerSet>GNU_4.7|GNU</compilerSet>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandlineTool>g++</commandlineTool>
+        </cTool>
         <ccTool>
           <incDir>
             <pElem>../twsapi/PosixSocketClient/src</pElem>
             <pElem>../twsapi/Shared</pElem>
             <pElem>../twsapi</pElem>
+            <pElem>../twsapi/PosixSocketClient</pElem>
           </incDir>
           <preprocessorList>
             <Elem>DEBUG</Elem>

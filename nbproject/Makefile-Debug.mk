@@ -14,7 +14,7 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
+CC=g++
 CCC=g++
 CXX=g++
 FC=gfortran
@@ -66,12 +66,12 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tradingclient_1: ${OBJECTFILES}
 ${OBJECTDIR}/PosixClient.o: PosixClient.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -DHAVE_CONFIG_H -DIB_USE_STD_STRING -D_GNU_SOURCE -I../twsapi/PosixSocketClient/src -I../twsapi/Shared -I../twsapi -MMD -MP -MF $@.d -o ${OBJECTDIR}/PosixClient.o PosixClient.cpp
+	$(COMPILE.cc) -g -DDEBUG -DHAVE_CONFIG_H -DIB_USE_STD_STRING -D_GNU_SOURCE -I../twsapi/PosixSocketClient/src -I../twsapi/Shared -I../twsapi -I../twsapi/PosixSocketClient -MMD -MP -MF $@.d -o ${OBJECTDIR}/PosixClient.o PosixClient.cpp
 
 ${OBJECTDIR}/Main.o: Main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -DHAVE_CONFIG_H -DIB_USE_STD_STRING -D_GNU_SOURCE -I../twsapi/PosixSocketClient/src -I../twsapi/Shared -I../twsapi -MMD -MP -MF $@.d -o ${OBJECTDIR}/Main.o Main.cpp
+	$(COMPILE.cc) -g -DDEBUG -DHAVE_CONFIG_H -DIB_USE_STD_STRING -D_GNU_SOURCE -I../twsapi/PosixSocketClient/src -I../twsapi/Shared -I../twsapi -I../twsapi/PosixSocketClient -MMD -MP -MF $@.d -o ${OBJECTDIR}/Main.o Main.cpp
 
 # Subprojects
 .build-subprojects:

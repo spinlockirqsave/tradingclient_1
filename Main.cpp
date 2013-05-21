@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	int clientId = 7;
 
 	unsigned attempt = 0;
-	printf( "Start of POSIX Socket Client2 Test %u\n", attempt);
+	printf( "tradingclient_1: start %u\n", attempt);
 
 	for (;;) {
 		++attempt;
@@ -35,10 +35,10 @@ int main(int argc, char** argv)
 			break;
 		}
 
-		printf( "Sleeping %u seconds before next attempt\n", SLEEP_TIME);
+		printf( "tradingclient_1: sleeping %u seconds before next attempt\n", SLEEP_TIME);
 		sleep( SLEEP_TIME);
 	}
 
-	printf ( "End of POSIX Socket Client Test\n");
+	printf ( "tradingclient_1: end\n");
 }
 
