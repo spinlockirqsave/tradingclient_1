@@ -43,8 +43,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-fPIC
+CXXFLAGS=-fPIC
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -53,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-ltwsapi
+LDLIBSOPTIONS=-L/opt/Qt5.0.1/5.0.1/gcc_64/lib -ltwsapi
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

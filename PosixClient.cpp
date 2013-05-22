@@ -269,7 +269,8 @@ void PosixClient::error(const int id, const int errorCode, const IBString errorS
 		disconnect();
 }
 
-void PosixClient::tickPrice( TickerId tickerId, TickType field, double price, int canAutoExecute) {printf("tradingclient_1: tickPrice: \n");}
+void PosixClient::tickPrice( TickerId tickerId, TickType field, double price, int canAutoExecute) {
+    printf("tradingclient_1: tickPrice: \n");}
 void PosixClient::tickSize( TickerId tickerId, TickType field, int size) {printf("tradingclient_1: tickSize\n");}
 void PosixClient::tickOptionComputation( TickerId tickerId, TickType tickType, double impliedVol, double delta,
 											 double optPrice, double pvDividend,

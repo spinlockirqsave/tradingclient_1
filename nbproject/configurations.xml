@@ -47,6 +47,7 @@
             <pElem>../twsapi</pElem>
             <pElem>../twsapi/PosixSocketClient</pElem>
           </incDir>
+          <commandLine>-fPIC</commandLine>
           <preprocessorList>
             <Elem>DEBUG</Elem>
             <Elem>HAVE_CONFIG_H</Elem>
@@ -55,6 +56,9 @@
           </preprocessorList>
         </ccTool>
         <linkerTool>
+          <linkerAddLib>
+            <pElem>/opt/Qt5.0.1/5.0.1/gcc_64/lib</pElem>
+          </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>twsapi</linkerLibLibItem>
           </linkerLibItems>
