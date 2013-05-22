@@ -17,7 +17,10 @@ enum State {
 	ST_CANCELORDER_ACK,
 	ST_PING,
 	ST_PING_ACK,
-	ST_IDLE
+	ST_IDLE,
+        ST_REQMKTDATA,
+        ST_REQMKTDATA_ACK
+        
 };
 
 
@@ -39,8 +42,9 @@ public:
 private:
 
 	void reqCurrentTime();
-	void placeOrder();
+	void placeOrder_MSFT();
 	void cancelOrder();
+        void reqMktData_MSFT();
 
 public:
 	// events

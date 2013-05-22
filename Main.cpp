@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 {
 	const char* host = argc > 1 ? argv[1] : "";
 	unsigned int port = argc > 2 ? atoi(argv[2]) : 7496;
-	int clientId = 7;
+	int clientId = 16;
 
 	unsigned attempt = 0;
 	printf( "tradingclient_1: start %u\n", attempt);
@@ -24,6 +24,7 @@ int main(int argc, char** argv)
 		printf( "Attempt %u of %u\n", attempt, MAX_ATTEMPTS);
 
 		IB::PosixClient client;
+                
 
 		client.connect( host, port, clientId);
 

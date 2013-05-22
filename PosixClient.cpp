@@ -10,6 +10,7 @@
 
 #include <time.h>
 #include <sys/time.h>
+#include <EClientSocketBase.h>
 
 #if defined __INTEL_COMPILER
 # pragma warning (disable:869)
@@ -77,25 +78,41 @@ void PosixClient::processMessages()
 
 	switch (m_state) {
 		case ST_PLACEORDER:
-			placeOrder();
+			//placeOrder_MSFT();
+                    printf("tradingclient_1: ST_PLACEORDER\n");
+                    reqMktData_MSFT();
 			break;
 		case ST_PLACEORDER_ACK:
+                        printf("tradingclient_1: ST_PLACEORDER_ACK\n");
+                        reqMktData_MSFT();
 			break;
 		case ST_CANCELORDER:
-			cancelOrder();
+                        printf("tradingclient_1: ST_CANCELORDER\n");
+			//cancelOrder();
 			break;
 		case ST_CANCELORDER_ACK:
+                        printf("tradingclient_1: ST_CANCELORDER_ACK\n");
 			break;
+                case ST_REQMKTDATA:
+                        printf("tradingclient_1: ST_REQMKTDATA\n");
+			//cancelOrder();
+			break;
+		case ST_REQMKTDATA_ACK:
+                        //printf("tradingclient_1: ST_REQMKTDATA_ACK\n");
+			break;        
 		case ST_PING:
-			reqCurrentTime();
+			printf("tradingclient_1: ST_PING\n");
+                        //reqCurrentTime();
 			break;
 		case ST_PING_ACK:
+                        printf("tradingclient_1: ST_PING_ACK\n");
 			if( m_sleepDeadline < now) {
 				disconnect();
 				return;
 			}
 			break;
 		case ST_IDLE:
+                        printf("tradingclient_1: ST_IDLE\n");
 			if( m_sleepDeadline < now) {
 				m_state = ST_PING;
 				return;
@@ -158,7 +175,7 @@ void PosixClient::reqCurrentTime()
 	m_pClient->reqCurrentTime();
 }
 
-void PosixClient::placeOrder()
+void PosixClient::placeOrder_MSFT()
 {
 	Contract contract;
 	Order order;
@@ -173,11 +190,27 @@ void PosixClient::placeOrder()
 	order.orderType = "LMT";
 	order.lmtPrice = 26.7;
 
-	printf( "Placing Order %ld: %s %ld %s at %f\n", m_orderId, order.action.c_str(), order.totalQuantity, contract.symbol.c_str(), order.lmtPrice);
+	printf( "tradingclient_1: Placing Order %ld: %s %ld %s at %f\n", m_orderId, order.action.c_str(), order.totalQuantity, contract.symbol.c_str(), order.lmtPrice);
 
 	m_state = ST_PLACEORDER_ACK;
 
 	m_pClient->placeOrder( m_orderId, contract, order);
+}
+
+void PosixClient::reqMktData_MSFT(){
+    	Contract contract;
+	Order order;
+
+	contract.symbol = "MSFT";
+	contract.secType = "STK";
+	contract.exchange = "SMART";
+	contract.currency = "USD";
+
+	printf( "tradingclient_1: Requesting MSFT mktData %ld: %s %ld %s at %f\n", m_orderId, order.action.c_str(), order.totalQuantity, contract.symbol.c_str(), order.lmtPrice);
+
+	m_state = ST_REQMKTDATA_ACK;
+        IBString i="233";
+	m_pClient->reqMktData( 100, contract, i, false);
 }
 
 void PosixClient::cancelOrder()
@@ -236,13 +269,16 @@ void PosixClient::error(const int id, const int errorCode, const IBString errorS
 		disconnect();
 }
 
-void PosixClient::tickPrice( TickerId tickerId, TickType field, double price, int canAutoExecute) {}
-void PosixClient::tickSize( TickerId tickerId, TickType field, int size) {}
+void PosixClient::tickPrice( TickerId tickerId, TickType field, double price, int canAutoExecute) {printf("tradingclient_1: tickPrice: \n");}
+void PosixClient::tickSize( TickerId tickerId, TickType field, int size) {printf("tradingclient_1: tickSize\n");}
 void PosixClient::tickOptionComputation( TickerId tickerId, TickType tickType, double impliedVol, double delta,
 											 double optPrice, double pvDividend,
 											 double gamma, double vega, double theta, double undPrice) {}
-void PosixClient::tickGeneric(TickerId tickerId, TickType tickType, double value) {}
-void PosixClient::tickString(TickerId tickerId, TickType tickType, const IBString& value) {}
+void PosixClient::tickGeneric(TickerId tickerId, TickType tickType, double value) {printf("tradingclient_1: tickGeneric\n");}
+void PosixClient::tickString(TickerId tickerId, TickType tickType, const IBString& value) {
+    printf("tradingclient_1: tickString\n");
+    printf("tickerId: %lu, TickType: %d, value: %s\n", tickerId, tickType, value.c_str());
+}
 void PosixClient::tickEFP(TickerId tickerId, TickType tickType, double basisPoints, const IBString& formattedBasisPoints,
 							   double totalDividends, int holdDays, const IBString& futureExpiry, double dividendImpact, double dividendsToExpiry) {}
 void PosixClient::openOrder( OrderId orderId, const Contract&, const Order&, const OrderState& ostate) {}
